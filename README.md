@@ -11,10 +11,10 @@ It is a fun project to visualize mandelbrot sets.
     git clone vivekvardhan-god/Graphics-basics
     ```
 2. Dependencies
-    SDL2 - It can be installed from the SDL2 website
-    After installing SDL2 go to "SDL2\x86_64-w64-mingw32"
-    Copy 'include' and 'lib' folders into your project folder under an src folder
-    Copy SDL2.dll from the bin into your project folder
+    - SDL2 - It can be installed from the SDL2 website
+    - After installing SDL2 go to "SDL2\x86_64-w64-mingw32"
+    - Copy 'include' and 'lib' folders into your project folder under an src folder
+    - Copy SDL2.dll from the bin into your project folder
    
 ## Usage
 
@@ -22,9 +22,9 @@ To use this project, follow these steps:
 
 1. Open your terminal
 2. Run the following command:
-    To run the project
-    Run Mandelbrotframe.cpp and choose the color choice(It is unnecessary if you already have the ppm files in the respective folders).
-    Run .\ppmvideo pathtofolder framerate
+    - To run the project
+    - Run Mandelbrotframe.cpp and choose the color choice(It is unnecessary if you already have the ppm files in the respective folders).
+    - Run .\ppmvideo pathtofolder framerate
 
-##Acknowledgements
+## Acknowledgements
 https://raytracing.github.io/books/RayTracingInOneWeekend.html
