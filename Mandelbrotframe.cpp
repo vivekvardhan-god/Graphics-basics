@@ -2,9 +2,10 @@
 #include <fstream>
 #include <filesystem>
 #include <string>
-#include "MandelbrotHSV.cpp"
+#include "Mandelbrot.cpp"
 
 namespace fs = std::filesystem;
+int colorchoice = 0;
 
 void createFilesInDirectory(const std::string& directory, int numberOfFiles) {
     // Ensure the directory exists
@@ -21,7 +22,7 @@ void createFilesInDirectory(const std::string& directory, int numberOfFiles) {
         
         // Check if the file was successfully created
         if (outFile.is_open()) {
-            plotHSV(i,filePath);
+            plot(i,filePath,colorchoice);
             outFile.close();
         } else {
             std::cerr << "Failed to create file: " << filePath << std::endl;
@@ -30,8 +31,18 @@ void createFilesInDirectory(const std::string& directory, int numberOfFiles) {
 }
 
 int main() {
-    std::string directoryPath = "FramesHSV";
-    int numberOfFiles = 120;
+    std::cout<<"Enter your colorchoice: "<<"\n";
+    std::cout<<"0 - Black and White"<<"\n";
+    std::cout<<"1 - Colored with hue"<<"\n";
+    std::cin>>colorchoice;
+    std::string directoryPath;
+    if(colorchoice==0){
+        directoryPath = "FramesBW";
+    }
+    if(colorchoice==1){
+        directoryPath = "FramesHSV";
+    }
+    int numberOfFiles = 96;
     
     createFilesInDirectory(directoryPath, numberOfFiles);
     

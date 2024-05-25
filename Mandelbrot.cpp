@@ -2,13 +2,13 @@
 #include <string>
 #include "color.h"
 #include "vec3.h"
+#include "HSV2RGB.h"
 
-const int R = 2;
 int MaxIter = 20;
 int mandelbrot(const vec3& c,const int maxIter){
     int iter = 0;
     auto z = vec3(0,0,0);
-    while(z.length_squared()<R*R && iter<maxIter){
+    while(z.length_squared()<4 && iter<maxIter){
         double x = z[0]*z[0] - z[1]*z[1] + c[0];
         double y =  2*z[0]*z[1] + c[1];
         z = vec3(x,y,0);
@@ -17,7 +17,7 @@ int mandelbrot(const vec3& c,const int maxIter){
     return iter;
 }
 
-void plotBW(int Maxiter,std::string s){
+void plot(int Maxiter,std::string s,int colorchoice){
     const char* str = s.c_str(); 
     freopen(str,"w",stdout);
     int MaxIter = Maxiter;
@@ -35,16 +35,24 @@ void plotBW(int Maxiter,std::string s){
         for(int i=0;i<maxwidth;i++){
             auto c = vec3(RE_START+(double(i)/maxwidth)*(RE_END-RE_START),IM_START+(double(j)/maxheight)*(IM_END-IM_START),0);
             int m = mandelbrot(c,MaxIter);
-            auto pixel_color = color(1.0 - (double(m)/MaxIter), 1.0 - (double(m)/MaxIter), 1.0 - (double(m)/MaxIter));
-            write_color(std::cout, pixel_color);
+            if(colorchoice==0){
+                auto pixel_color = color(1.0 - (double(m)/MaxIter), 1.0 - (double(m)/MaxIter), 1.0 - (double(m)/MaxIter));
+                write_color(std::cout, pixel_color);
+            }
+            if(colorchoice==1){
+                float hue = 360*(double(m))/MaxIter;
+                float saturation = 100;
+                float value = (m<MaxIter)?100:0;
+                auto RGBvec = HSVtoRGB(hue,saturation,value);
+                write_color(std::cout, RGBvec);
+            }
         }
     }
-    std::clog<<"\rDone.                      \n";
+    std::clog<<"\rDone.                      \n"<<std::flush;
 }
 
-/*
-int main(){
-    plot(20,"mandelbrot.ppm");
+/*int main(){
+    plot(20,"mandelbrotBW.ppm",0); Run this for a black and white mandelbrot image
+    plot(20,"mandelbrotHSV.ppm",1); Run this for a colored hue mandelbrot image
     return 0;
-}
-*/
+}*/
