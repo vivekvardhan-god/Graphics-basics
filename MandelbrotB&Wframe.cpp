@@ -30,7 +30,7 @@ void createFilesInDirectory(const std::string& directory, int numberOfFiles) {
 }
 
 int main() {
-    std::string directoryPath = "FramesB&W";
+    std::string directoryPath = "FramesBW";
     int numberOfFiles = 120;
     
     createFilesInDirectory(directoryPath, numberOfFiles);

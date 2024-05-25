@@ -3,11 +3,12 @@
 #include "color.h"
 #include "vec3.h"
 
+const int R = 2;
 int MaxIter = 20;
 int mandelbrot(const vec3& c,const int maxIter){
     int iter = 0;
     auto z = vec3(0,0,0);
-    while(z.length_squared()<4 && iter<maxIter){
+    while(z.length_squared()<R*R && iter<maxIter){
         double x = z[0]*z[0] - z[1]*z[1] + c[0];
         double y =  2*z[0]*z[1] + c[1];
         z = vec3(x,y,0);
