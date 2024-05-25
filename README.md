@@ -24,7 +24,13 @@ To use this project, follow these steps:
 2. Run the following command:
     - To run the project
     - Run Mandelbrotframe.cpp and choose the color choice(It is unnecessary if you already have the ppm files in the respective folders).
+   ```
+   Mandelbrotframe.cpp
+   ```
     - Run .\ppmvideo pathtofolder framerate
+   ```
+       .\ppmvideo path\folder framerate
+   ```
 
 ## Acknowledgements
 https://raytracing.github.io/books/RayTracingInOneWeekend.html
