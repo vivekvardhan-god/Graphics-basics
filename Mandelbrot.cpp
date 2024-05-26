@@ -65,7 +65,8 @@ void plot(int Maxiter,std::string s,int colorchoice,int Fractalchoice){
                 Color(m,colorchoice);
             }
             if(Fractalchoice==1){
-                auto c = vec3(0.285,0.01,0);
+                auto c = vec3(-0.8,0.156,0);
+                //auto c = vec3(0.285,0.01,0); // For Julia set you can try out diffferent sets to see different results
                 auto z = vec3(RE_START+(double(i)/maxwidth)*(RE_END-RE_START),IM_START+(double(j)/maxheight)*(IM_END-IM_START),0);
                 int m = julia(c,z,MaxIter);
                 Color(m,colorchoice);
